@@ -11,7 +11,7 @@ public class Messages
     private List<Users> recipients = new ArrayList<>();
     private Date timeStamp;
     private String content;
-    
+
     public Messages(Users sender, List<Users> recipients, String content)
     {
         this.sender = sender;
@@ -26,6 +26,11 @@ public class Messages
     }
 
 
+    public List<Users> getRecipients()
+    {
+        return recipients;
+    }
+    /** 
     public Users getRecipients()
     {
         for (Users user : recipients)
@@ -35,6 +40,7 @@ public class Messages
         return null;
         
     }
+    */
 
     public void getRecipientsName()
     {
@@ -48,13 +54,18 @@ public class Messages
     {
         return content;
     }
+    public void setContent(String content)
+    {
+        this.content = content;
+    }
     public Date getTimeStamp()
     {
         return timeStamp;
     }
-
-    
-    
+    public void setTimeStamp(Date timeStamp)
+    {
+        this.timeStamp = timeStamp;
+    }
     public String toString()
     {
         return " From: " + sender.name + " ";
