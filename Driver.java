@@ -11,24 +11,24 @@ public class Driver
        Users bri = new Users("bri", chat1 );
        Users jj = new Users("jj", chat1);
        Users yourMom = new Users("your mom", chat1);
+       Users spam = new Users("spam", chat1);
+
        
        chat1.registerUser(bri);
        chat1.registerUser(jj);
        chat1.registerUser(yourMom);
-
+       chat1.registerUser(spam);
        
-       Messages message1 = new Messages(bri, chat1.getRecipients(), "wassup");
+       spam.setBlocked(true); 
 
-       //chat1.getRecipientsName();
 
-       //message1.getRecipientsName();
 
+       //bri.sendMessage(chat1.getRecipients(), "what are you guys doing?");
+       bri.sendMessage(chat1.getRecipients(), "what???");
+       spam.sendMessage(chat1.getRecipients(), "hddjkldjdklj");
+       bri.sendMessage(chat1.getRecipients(), "hello???");
+       bri.undoLastMessage();
        
-
-       
-    
-       //System.out.println(message1.toString());
-       chat1.send(message1);
 
     }
 
