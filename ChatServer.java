@@ -15,10 +15,6 @@ public class ChatServer
         registeredUsers = new ArrayList<>();
     }
 
-    public void createMessage()
-    {
-        message = new Messages(null, null, null);
-    }
     public void registerUser(Users user)
     {
         registeredUsers.add(user);
@@ -28,22 +24,30 @@ public class ChatServer
     {
         registeredUsers.remove(user);
     }
-
     public void send(Messages message)
     {
+        
+        for(Users users: message.getRecipients())
+        {
+            if(!message.getSender().isBlocked() && !users.isBlocked() && users != message.getSender())
+            {
+                System.out.println( "message: " + message.getContent() +  message.toString() + " To: " + users.getName() + " " + message.getTimeStamp());  
+            }
+        }
+        /** 
         for(Users users: registeredUsers)
         {
-            if(!users.isBlocked())
+           if(!users.isBlocked() && users != message.getSender() && !message.getSender().isBlocked())
             {
                 System.out.println( "message: " + message.getContent() +  message.toString() + " To: " + users.getName() + " " + message.getTimeStamp());  
             }
             else
             {
-                System.out.println("recipient blocked. ");
+                System.out.println("Message not sent because recipient is blocked or sender is blocked. ");
             }
         }
+        */
     }
-
     public List<Users> getRecipients()
     {
         List<Users> validUsers = new ArrayList<>();
@@ -57,7 +61,6 @@ public class ChatServer
         }
         return validUsers;
     }
-
     public void getRecipientsName()
     {
         for (Users user : registeredUsers)
@@ -65,10 +68,10 @@ public class ChatServer
             System.out.println(user.getName());
         }
     }
-
     public List<Users> getRegisteredUsers()
     {
         return registeredUsers;
     }
+
 
 }
